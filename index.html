@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectrion Labs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', sans-serif;
+}
+
+body {
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 820px;
+  padding: 40px;
+  text-align: center;
+}
+
+/* BRAND */
+.logo {
+  font-size: 66px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.logo span {
+  color: #8f5cff;
+}
+
+/* BADGE */
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(143, 92, 255, 0.12);
+  border: 1px solid rgba(143, 92, 255, 0.3);
+  color: #8f5cff;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+/* PANEL */
+.panel {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: left;
+  color: #bdbdbd;
+  line-height: 1.75;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* SECTION TITLES */
+.panel b {
+  display: block;
+  color: #e8e8e8;
+  margin-bottom: 6px;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #6cf, #8f5cff);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* FOOTER */
+.small {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">Spectrion <span>Labs</span></div>
+
+  <div class="badge">Discontinued Service Record</div>
+
+  <div class="panel" id="panelText"></div>
+
+  <a class="btn" href="https://spectrion.github.io">Return to Spectrion Labs</a>
+
+  <div class="small">
+    Spectrion Labs / registry archive node
+  </div>
+
+</div>
+
+<script>
+function formatName(url) {
+  try {
+    let path = new URL(url).pathname;
+    let name = path.split("/").filter(Boolean).pop();
+    if (!name) return "This Service";
+
+    return name
+      .replace(/[-_]/g, " ")
+      .replace(/\b\w/g, c => c.toUpperCase());
+  } catch {
+    return "This Service";
+  }
+}
+
+const serviceName = formatName(window.location.href);
+
+document.getElementById("panelText").innerHTML = `
+<b>Service Identification</b>
+${serviceName} originated as an independent system and is no longer maintained by its original developers.
+
+<br><br>
+
+<b>Current Status</b>
+All development, deployment, and operational support for ${serviceName} has been formally discontinued. The system is no longer active in its original environment.
+
+<br><br>
+
+<b>Registry Handling</b>
+Associated concepts, assets, or structural components have been retained within the Spectrion Labs ecosystem for archival reference and internal documentation purposes.
+
+<br><br>
+
+<b>Record Context</b>
+This entry is maintained as part of the Spectrion Labs legacy registry to document the lifecycle state of ${serviceName}. It does not represent an active service or supported product.
+`;
+</script>
+
+</body>
+</html>
